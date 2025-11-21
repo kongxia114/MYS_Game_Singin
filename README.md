@@ -139,3 +139,13 @@
 
 - **2025-02-08**: v1.0.0 初始发布，支持原神和崩铁多账号签到功能。
 - **2025-09-17**: v1.1.0 增加云原神云崩铁签到功能。
+- 
+## 致谢与版权说明
+
+本项目基于 [GildedFlames/MYS_Game_Singin](https://github.com/GildedFlames/MYS_Game_Singin) 进行 Fork 和个性化配置。
+
+**请支持原作者：**
+- 原项目地址：https://github.com/GildedFlames/MYS_Game_Singin
+- 感谢 [GildedFlames](https://github.com/GildedFlames) 的辛勤开发！
+
+本仓库仅用于个人学习和使用。
