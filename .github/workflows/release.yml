@@ -2,7 +2,7 @@ name: Update Activity Timestamp
 
 on:
   schedule:
-    - cron: '0 0 1 */2 *'  # 每2个月1号 00:00 UTC
+    - cron: '0 0 1 */1 *'  # 每1个月1号 00:00 UTC
   workflow_dispatch:
 
 jobs:
