@@ -1,23 +1,26 @@
-name: Keep Actions Alive
+name: Update Activity Timestamp
 
 on:
   schedule:
-    - cron: '0 0 1,15 * *'
+    - cron: '0 0 1 */2 *'  # 每2个月1号 00:00 UTC
   workflow_dispatch:
 
 jobs:
-  refresh:
+  update:
     runs-on: ubuntu-latest
     
     steps:
     - uses: actions/checkout@v3
       
-    - uses: softprops/action-gh-release@v1
-      with:
-        tag_name: refresh-${{ github.run_number }}
-        name: "Refresh ${{ github.run_number }}"
-        body: "Auto-generated to prevent Actions expiration"
-        draft: false
-        prerelease: true
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Update timestamp
+      run: |
+        mkdir -p Temporary
+        date -u > Temporary/.last-active
+        
+    - name: Commit
+      run: |
+        git config user.name 'github-actions[bot]'
+        git config user.email 'github-actions[bot]@users.noreply.github.com'
+        git add Temporary/.last-active
+        git commit -m "chore: update activity timestamp [skip ci]" || exit 0
+        git push
