@@ -1,0 +1,49 @@
+name: Refresh Artifacts (Empty Release)
+
+on:
+  # Run on 1st and 15th of each month to refresh expiry
+  schedule:
+    - cron: '0 0 1,15 * *'  # 00:00 UTC on 1st and 15th
+  workflow_dispatch:  # Allow manual trigger
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+      
+    - name: Create Empty Release
+      uses: softprops/action-gh-release@v1
+      with:
+        tag_name: refresh-${{ github.run_number }}
+        name: Refresh Artifacts #${{ github.run_number }}
+        body: |
+          ## Periodic Refresh for Actions Expiry
+          
+          This release is only used to refresh GitHub Actions 60-day expiry.
+          
+          **Details:**
+          - Run ID: #${{ github.run_number }}
+          - Run Time: ${{ github.event.head_commit.timestamp || now() }}
+          - Trigger: ${{ github.event_name }}
+          - Commit: ${{ github.sha }}
+          
+          ---
+          
+          **Note:**
+          1. This release contains no files
+          2. Only used to maintain Actions build history
+          3. Old versions are automatically cleaned
+          
+          **Next refresh:** 1st and 15th of each month
+        draft: false
+        prerelease: true  # Mark as pre-release
+        make_latest: false  # Don't set as latest
+        generate_release_notes: false
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
