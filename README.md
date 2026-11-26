@@ -140,6 +140,11 @@
    npm start
    ```
 
+## 协议与旧平台记录
+
+- [签到协议速查](docs/signin-protocol.md)：接口、DS 签名、Cookie 字段、返回码、云游戏
+- [OneTool mihoyo 模块观察](docs/onetool-mihoyo.md)：旧代挂平台加密模块的分析结论与替代方案
+
 ## 常见问题
 
 ### 日志提示 `-100 登录状态失效`
