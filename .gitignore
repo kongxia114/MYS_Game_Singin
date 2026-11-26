@@ -19,6 +19,7 @@ dist
 
 # local credentials (never commit cookies/tokens)
 MY cook*.txt
+更新TOKEN.txt
 cookie*.txt
 .cookie
 

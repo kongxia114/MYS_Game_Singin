@@ -20,7 +20,7 @@ const WEB_SALT = process.env.MIHOYO_WEB_SALT || '4751cb5557bfad5e249e58462c39fb0
 const CLIENT_TYPE = '5'
 
 const ROOT_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..')
-const LOCAL_COOKIE_FILES = ['MY cook 不上传i.txt', 'cookie.txt', '.cookie']
+const LOCAL_COOKIE_FILES = ['MY cook 不上传i.txt', '更新TOKEN.txt', 'cookie.txt', '.cookie']
 
 const GAMES = {
   Genshin: {
